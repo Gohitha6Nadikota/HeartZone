@@ -6,9 +6,12 @@ import { BrowserRouter as Router,Link, Routes, Route} from "react-router-dom";
 import ProductCard from "./components/ProductCard";
 import CartPage from "./components/CartPage";
 import Login from "./components/Login";
-
+import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [data, setData] = useState([]);
+  const cartItemsCount = useSelector((state) => state.cart.items.length);
   const fetchData = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
@@ -45,9 +48,16 @@ function App() {
                 <p className="text-sm md:text-lg text-white">Home</p>
               </Link>
               <Link to="/cart">
-                <p className="text-lg md:text-xl text-white">
-                  <FaCartShopping />
-                </p>
+                <div className="relative flex items-center">
+                  <p className="text-lg md:text-xl text-white">
+                    <FaCartShopping />
+                  </p>
+                  {cartItemsCount > 0 && (
+                    <span className="absolute -top-4 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-1">
+                      {cartItemsCount}
+                    </span>
+                  )}
+                </div>
               </Link>
               <Link to="/login">
                 <p className="text-sm md:text-lg text-white">Login</p>
@@ -61,7 +71,7 @@ function App() {
             element={
               <div className="flex flex-wrap justify-center gap-4 py-4 px-2">
                 {data.map((product) => (
-                  <ProductCard product={product} />
+                  <ProductCard product={product} key={product.id} />
                 ))}
               </div>
             }
@@ -69,6 +79,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <ToastContainer/>
       </div>
     </Router>
   );
