@@ -34,13 +34,13 @@ const CartSummary = () => {
           <div className="flex justify-between font-semibold text-md p-2 text-green-600">
             <span>Discount</span>
             <span className="text-green-600">
-              {"- $ " + totalCost.toFixed(2) * 0.2}
+              {"- $ " + (totalCost*(0.12)).toFixed(2)}
             </span>
           </div>
           <hr className="my-4 border-black" />
           <div className="flex justify-between font-bold text-lg p-2">
             <span>Final Total</span>
-            <span>{"$ " + totalCost.toFixed(2) * 0.8}</span>
+            <span>{"$ " + (totalCost*(0.88)).toFixed(2)}</span>
           </div>
         </>
       ) : (
