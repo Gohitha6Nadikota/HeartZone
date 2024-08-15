@@ -5,6 +5,7 @@ import {
 } from "../utils/cartSlice";
 import CartCard from "./CartCard";
 import { toast } from "react-toastify";
+import CartSummary from "./CartSummary";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const CartPage = () => {
         </h1>
         <button
           onClick={handleClearCart}
-          className="bg-[#3d52a0] text-white p-2 mr-2 rounded-lg shadow-lg"
+          className="bg-[#3d52a0] text-white p-2 mr-2 md:mr-4 rounded-lg shadow-lg"
         >
           Clear Cart
         </button>
@@ -32,6 +33,14 @@ const CartPage = () => {
         {cartItems.map((item) => (
           <CartCard product={item} key={item.id} />
         ))}
+      </div>
+      <div className="w-[100%] text-2xl flex items-center flex-col justify-center ">
+        <p className="text-2xl text-[#23367c] my-2 font-semibold ">
+          Summary Section
+        </p>
+        <div className="w-[100%]">
+          <CartSummary/>
+        </div>
       </div>
     </div>
   );
