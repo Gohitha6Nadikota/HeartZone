@@ -19,7 +19,6 @@ function App() {
         throw new Error("Response was not ok");
       }
       const json = await response.json();
-      console.log(json);
       setData(json);
     } catch (error) {
       console.error("Error in fetch: " + error);

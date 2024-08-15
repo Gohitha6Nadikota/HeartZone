@@ -12,7 +12,7 @@ const CartSummary = () => {
     <div className="p-4 bg-white shadow-md rounded-lg mt-4 w-[75%] md:w-[50%] mx-auto text-sm">
       {cartItems.length !== 0 ? (
         <>
-          <div className="flex justify-between border-b-2 border-black pb-2 mb-5 px-2">
+          <div className="flex justify-between border-b-2 border-black pb-4 mb-5 px-2">
             <span className="font-semibold text-black">Product</span>
             <span className="font-semibold text-black">Total</span>
           </div>
@@ -27,9 +27,20 @@ const CartSummary = () => {
             ))}
           </ul>
           <hr className="my-4 border-black" />
-          <div className="flex justify-between font-bold text-lg">
-            <span>Total:</span>
+          <div className="flex justify-between font-semibold text-md p-2">
+            <span>Total</span>
             <span>{"$ " + totalCost.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between font-semibold text-md p-2 text-green-600">
+            <span>Discount</span>
+            <span className="text-green-600">
+              {"- $ " + totalCost.toFixed(2) * 0.2}
+            </span>
+          </div>
+          <hr className="my-4 border-black" />
+          <div className="flex justify-between font-bold text-lg p-2">
+            <span>Final Total</span>
+            <span>{"$ " + totalCost.toFixed(2) * 0.8}</span>
           </div>
         </>
       ) : (

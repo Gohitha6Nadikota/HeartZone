@@ -25,7 +25,7 @@ const ProductCard = ({product}) => {
       <p className="text-md line-clamp-2 h-[50px]">
         {product.description}
       </p>
-      <p className="text-black font-bold mt-1">{"Price  $"+ product.price.toFixed(2)}</p>
+      <p className="text-black font-bold mt-1">{"Price $ "+ product.price.toFixed(2)}</p>
       <button
         className="bg-[#3d52a0] text-white px-4 py-2 mt-2 rounded hover:bg-blue-600"
         onClick={handleAddToCart}
